@@ -1,0 +1,30 @@
+[
+  {
+    "id": "BK7A9C2F",
+    "title": "Heart of Darkness",
+    "author": "Joseph Conrad",
+    "coverImage": "/src/assets/files/Heart-of-Darkness-Joseph-Conrad.jpg",
+    "pdfFile": "/src/assets/files/Heart-of-Darkness-Joseph-Conrad.pdf"
+  },
+  {
+    "id": "BK3E8D1B",
+    "title": "The Gambler",
+    "author": "Fyodor Dostoevsky",
+    "coverImage": "/src/assets/files/The-Gambler-Fyodor-Dostoevsky.jpg",
+    "pdfFile": "/src/assets/files/The-Gambler-Fyodor-Dostoevsky.pdf"
+  },
+  {
+    "id": "BK9F4C6A",
+    "title": "The Lady with the Dog and Other Stories",
+    "author": "Anton Chekhov",
+    "coverImage": "/src/assets/files/The-Lady-with-the-Dog-and-Other-Stories-Anton-Chekhov.jpg",
+    "pdfFile": "/src/assets/files/The-Lady-with-the-Dog-and-Other-Stories-Anton-Chekhov.pdf"
+  },
+  {
+    "id": "BK5H2N8E",
+    "title": "The Little Prince",
+    "author": "Antoine de Saint-Exupéry",
+    "coverImage": "/src/assets/files/The-Little-Prince-Antoine-de-Saint-Exup-ry.jpg",
+    "pdfFile": "/src/assets/files/The-Little-Prince-Antoine-de-Saint-Exup-ry.pdf"
+  }
+]
