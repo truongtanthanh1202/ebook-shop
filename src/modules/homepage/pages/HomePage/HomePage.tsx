@@ -1,17 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { RouteName } from '@/shared/constants';
+import { loadAllReadingProgress } from '@/shared/helpers';
 import booksData from '@/assets/data/books.json';
 import { HeroSection, FeaturedBooksSection } from '../../components';
 import type { Book, BookProgress } from '../../types';
-import { MOCK_PROGRESS } from '../../constants';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+  const [bookProgresses, setBookProgresses] = useState<BookProgress[]>([]);
 
   const books = booksData as Book[];
-  const bookProgresses: BookProgress[] = Object.values(MOCK_PROGRESS);
+
+  // Load current reading progress from localStorage
+  useEffect(() => {
+    const loadProgress = () => {
+      const allProgress = loadAllReadingProgress();
+      const progressArray: BookProgress[] = Object.values(allProgress).map((progress) => ({
+        bookId: progress.bookId,
+        currentPage: progress.currentPage,
+        totalPages: progress.totalPages,
+        progressPercentage: progress.progressPercentage,
+      }));
+      setBookProgresses(progressArray);
+    };
+
+    loadProgress();
+
+    // Listen for storage changes to update progress in real-time
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === 'ebook_reading_progress') {
+        loadProgress();
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   const handleBookClick = (book: Book) => {
     navigate(`/${RouteName.BOOK_DETAILS}/${book.id}`);
