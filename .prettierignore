@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Generated files
+*.min.js
+*.min.css
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Husky
+.husky/
+
+# IDE
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.tsbuildinfo
+
+# Prettier ignore patterns for specific files
+public/manifest.json
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico

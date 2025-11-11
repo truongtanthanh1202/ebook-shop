@@ -1,0 +1,103 @@
+// Button Components adjut to match system design if needed, example commented below
+// @use '../common/variables' as vars;
+
+// .btn {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   border: none;
+//   border-radius: vars.$border-radius-md;
+//   font-family: vars.$font-family-primary;
+//   font-weight: vars.$font-weight-medium;
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+//   text-decoration: none;
+//   padding: vars.$spacing-sm vars.$spacing-md;
+//   font-size: vars.$font-size-base;
+
+//   &:focus {
+//     outline: 2px solid transparent;
+//     outline-offset: 2px;
+//     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+//   }
+
+//   &:disabled {
+//     opacity: 0.5;
+//     cursor: not-allowed;
+//   }
+// }
+
+// .btn-primary {
+//   background-color: vars.$primary-color;
+//   color: white;
+
+//   &:hover:not(:disabled) {
+//     background-color: vars.$primary-hover;
+//   }
+
+//   &:active {
+//     background-color: vars.$primary-dark;
+//   }
+// }
+
+// .btn-secondary {
+//   background-color: vars.$secondary-light;
+//   color: vars.$secondary-color;
+
+//   &:hover:not(:disabled) {
+//     background-color: #e5e7eb;
+//     color: vars.$secondary-hover;
+//   }
+// }
+
+// .btn-success {
+//   background-color: vars.$success-color;
+//   color: white;
+
+//   &:hover:not(:disabled) {
+//     background-color: #059669;
+//   }
+// }
+
+// .btn-warning {
+//   background-color: vars.$warning-color;
+//   color: white;
+
+//   &:hover:not(:disabled) {
+//     background-color: #d97706;
+//   }
+// }
+
+// .btn-error {
+//   background-color: vars.$error-color;
+//   color: white;
+
+//   &:hover:not(:disabled) {
+//     background-color: #dc2626;
+//   }
+// }
+
+// .btn-outline {
+//   background-color: transparent;
+//   border: 1px solid vars.$primary-color;
+//   color: vars.$primary-color;
+
+//   &:hover:not(:disabled) {
+//     background-color: vars.$primary-color;
+//     color: white;
+//   }
+// }
+
+// .btn-sm {
+//   padding: vars.$spacing-xs vars.$spacing-sm;
+//   font-size: 0.875rem;
+// }
+
+// .btn-lg {
+//   padding: vars.$spacing-md vars.$spacing-lg;
+//   font-size: 1.125rem;
+// }
+
+// .btn-full {
+//   width: 100%;
+// }

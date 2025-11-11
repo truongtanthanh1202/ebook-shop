@@ -1,0 +1,8 @@
+@layer theme;
+@import 'tailwindcss/theme.css' layer(theme);
+
+@theme {
+  --color-primary: #3b82f6;
+}
+
+@import 'tailwindcss/utilities.css'; // don't use layer(utilities) because it make can't overwrite 3rd party plugin utilities
