@@ -1,165 +1,201 @@
-# Ebook Shop
+# 📚 E-Book Shop
 
-A modern React application built with Vite, TypeScript, Tailwind CSS, and SCSS.
+A modern e-book reading application built with React, TypeScript, Vite, and Tailwind CSS.
 
-## 🚀 Features
+## ✨ Key Features
 
-- **React 19** with TypeScript
-- **Vite** for fast development and building
-- **Tailwind CSS** with SCSS support for styling
-- **Prettier** for code formatting
-- **ESLint** for code linting
-- **Husky** for Git hooks
-- **Google Fonts** (Poppins) integration
-- Pre-commit hooks for code quality
+- **📖 PDF Reading**: View and read PDF books with full control features.
+- \*\*👌🏼 Supports keyboard shortcuts in book reading page
+- **💾 Reading Progress**: Automatically save reading progress to localStorage
+- **🎯 Page Control**: Navigate pages with buttons, keyboard shortcuts, or direct page input
+- **🔍 Zoom Control**: Adjust PDF display size
+- **📱 Responsive UI**: Compatible with all screen sizes
+- **⚡ High Performance**: Using Vite for fast development and build
 
-## 📦 Installation
+## 🚀 Getting Started
+
+### System Requirements
+
+- Define in .nvmrc
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd ebook-shop
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-## 🛠️ Development
+2.5 Check husky :v. Setup Husky git hooks
 
-Start the development server:
+```bash
+npm run prepare
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-## 🧹 Code Quality
+4. Open your browser at `http://localhost:5173`
 
-### Formatting
+## 📜 Available Scripts
 
-- Check formatting: `npm run format:check`
-- Fix formatting: `npm run format`
+### Development
 
-### Linting
+- `npm run dev` - Start development server with hot reload
+- `npm run preview` - Preview production build locally
 
-- Check linting: `npm run lint`
-- Fix linting: `npm run lint:fix`
+### Build & Production
 
-### Type Checking
+- `npm run build` - Build for production with TypeScript check
+- `npm run build:testing` - Build for testing environment
+- `npm run build:production` - Build for production environment
 
-- Run TypeScript check: `npm run type-check`
+### Code Quality
 
-## 🎨 Styling
+- `npm run lint` - Check ESLint errors
+- `npm run lint:fix` - Auto-fix ESLint errors
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
+- `npm run type-check` - Check TypeScript types
 
-This project uses a combination of Tailwind CSS and custom SCSS:
-
-### File Structure
+## 📁 Project Folder Structure
 
 ```
-src/assets/styles/
-├── main.scss              # Main entry point with Tailwind imports
-├── app.scss              # Custom SCSS imports
-├── libs/
-│   ├── _variables.scss   # SCSS variables
-│   └── _mixins.scss      # SCSS mixins
-├── common/
-│   ├── _reset.scss       # CSS reset
-│   ├── _typography.scss  # Typography styles
-│   └── _layout.scss      # Layout utilities
-└── components/
-    ├── _buttons.scss     # Button components
-    ├── _cards.scss       # Card components
-    └── _forms.scss       # Form components
+ebook-shop/
+├── public/                     # Static files
+├── src/                        # Source code
+│   ├── assets/                 # Assets (images, data, styles)
+│   │   ├── data/              # JSON data files (books.json)
+│   │   ├── files/             # Static files
+│   │   ├── icons/             # Icon assets
+│   │   ├── images/            # Image assets
+│   │   └── styles/            # SCSS styles
+│   │       ├── app.scss       # Main SCSS entry
+│   │       ├── common/        # Common styles (variables, fonts, general)
+│   │       ├── components/    # Component-specific styles
+│   │       └── libs/          # Third-party styles (Tailwind)
+│   │
+│   ├── components/            # Shadcn/UI components
+│   │   └── ui/
+│   │
+│   ├── core/                  # Core application logic (API interaction)
+│   │
+│   ├── layout/                # Layout components
+│   │
+│   ├── lib/                   # Utility libraries using by Shadcn/ui
+│   │   └── utils.ts
+│   │
+│   ├── modules/               # Feature modules
+│   │   ├── homepage/         # Homepage module
+│   │   │   ├── components/   # Homepage-specific components
+│   │   │   ├── constants/    # Homepage constants
+│   │   │   ├── pages/        # Homepage pages
+│   │   │   ├── routes.tsx    # Homepage routing
+│   │   │   └── types/        # Homepage TypeScript types
+│   │   │
+│   │   ├── bookManager/      # Book reading module
+│   │   │   ├── components/   # Reading components (PDFViewer, ControlBar, etc.)
+│   │   │   ├── constants/    # Reading constants (PDF settings, shortcuts)
+│   │   │   ├── hooks/        # Reading hooks (useReadingProgress)
+│   │   │   ├── pages/        # Reading pages (BookReading)
+│   │   │   ├── routes.tsx    # Reading routing
+│   │   │   └── types/        # Reading TypeScript types
+│   │   │
+│   │   └── notFound/         # 404 page module
+│   │
+│   ├── router/                # Application routing
+│   │   ├── index.tsx         # Main router setup
+│   │   └── routes.ts         # Route definitions
+│   │
+│   ├── services/              # API services
+│   │
+│   ├── shared/                # Shared utilities across modules
+│   │   ├── common/           # Common shared logic
+│   │   ├── components/       # Shared components
+│   │   ├── constants/        # Global constants (route names)
+│   │   ├── helpers/          # Utility helper functions
+│   │   ├── hooks/            # Shared hooks
+│   │   └── interfaces/       # Shared TypeScript interfaces
+│   │
+│   ├── store/                 # State management
+│   │   ├── hooks.ts          # Redux hooks
+│   │   ├── index.ts          # Store setup
+│   │   ├── store.ts          # Store configuration
+│   │   └── modules/          # Store modules (readingBook slice)
+│   │
+│   ├── App.tsx               # Main App component
+│   ├── main.tsx              # Application entry point
+│   └── index.css             # Global CSS with Tailwind
+│
+├── types/                     # Global TypeScript definitions
+├── env/                       # Environment configuration
+├── dist/                      # Build output
+├── .husky/                    # Git hooks configuration
+├── components.json            # shadcn/ui configuration
+├── eslint.config.js           # ESLint configuration
+├── postcss.config.js          # PostCSS configuration
+├── tailwind.config.js         # Tailwind CSS configuration
+├── tsconfig.json              # TypeScript configuration
+├── vite.config.ts             # Vite configuration
+└── package.json               # Project dependencies and scripts
 ```
 
-### Usage
+## 🎯 Key Folder Functions
 
-- Use Tailwind utilities for rapid development
-- Use custom SCSS components for complex styling
-- All styles use the Poppins font family
+### `/src/modules/`
 
-## 🔧 Git Hooks
+Contains independent feature modules:
 
-### Pre-commit
+- **homepage**: Home page displaying book list and reading progress
+- **bookManager**: Book reading module with PDF viewer, control bar, progress saving
+- **notFound**: 404 page
 
-- Runs ESLint with auto-fix
-- Runs Prettier formatting
-- Only on staged files
+### `/src/components/ui/`
 
-### Pre-push
+Reusable UI components:
 
-- Runs TypeScript type checking
+- **button**: Button component with variants
+- **carousel**: Carousel component for book display
+- **progress-bar**: Reading progress bar
 
-## 🏗️ Build
+### `/src/shared/`
 
-```bash
-npm run build
-```
+Shared utilities and logic:
 
-## React + TypeScript + Vite
+- **constants**: Route names and global constants
+- **helpers**: Helper functions (readingProgress utilities)
+- **hooks**: Shared custom hooks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### `/src/store/`
 
-Currently, two official plugins are available:
+State management with Redux Toolkit:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **modules/readingBook**: Slice managing reading book state
 
-## React Compiler
+## 🛠️ Technology Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** with TypeScript
+- **Vite** for development and build
+- **Tailwind CSS** + SCSS for styling
+- **react-pdf** for PDF display
+- **react-router** for routing
+- **Redux Toolkit** for state management
+- **ESLint** + **Prettier** for code quality
+- **Husky** for git hooks
 
-## Expanding the ESLint configuration
+## 📝 Notes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+- Reading progress is saved in localStorage
+- Supports keyboard shortcuts in book reading page
+- Responsive design for mobile and desktop
+- Hot reload in development mode
