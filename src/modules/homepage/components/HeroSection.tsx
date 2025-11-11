@@ -37,7 +37,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
             <Button
               variant='outline'
-              className='rounded-full px-8 py-2 border-gray-300 hover:bg-gray-50 transition-colors duration-300 font-medium tracking-wide'
+              className='rounded-full px-8 py-2 border-gray-300 hover:bg-gray-50 transition-colors duration-300 font-medium tracking-wide cursor-pointer'
               onClick={onReadMore}
             >
               {CONTENT.hero.buttonText}

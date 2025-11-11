@@ -38,7 +38,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfFile, currentPage, scale, onLo
 
   return (
     <div className='flex flex-col items-center py-8'>
-      <div className='bg-white rounded-xl shadow-lg p-6 md:p-10 mx-auto max-w-[800px]'>
+      <div className='bg-white rounded-xl shadow-lg p-6 md:p-10 mx-auto max-w-fit'>
         {error ? (
           <div className='text-center py-12'>
             <div className='text-red-500 text-lg font-medium mb-2'>{error}</div>

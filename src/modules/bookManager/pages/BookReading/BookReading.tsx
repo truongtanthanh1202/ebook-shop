@@ -22,11 +22,11 @@ const BookReading: React.FC = () => {
     error: null,
   });
 
-  const { progress, updateProgress } = useReadingProgress(bookId || '');
+  const { progress, updateProgress, updateProgressOnRead } = useReadingProgress(bookId || '');
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     navigate(RouteName.HOME);
-  };
+  }, [navigate]);
 
   const handlePDFLoadSuccess = useCallback(
     (numPages: number) => {
@@ -65,19 +65,33 @@ const BookReading: React.FC = () => {
           ...prev,
           currentPage: page,
         }));
-        updateProgress(page, pdfState.totalPages);
+        // Use updateProgressOnRead for manual page input to track reading
+        updateProgressOnRead(page, pdfState.totalPages);
       }
     },
-    [pdfState.totalPages, updateProgress],
+    [pdfState.totalPages, updateProgressOnRead],
+  );
+
+  const goToPageWithTracking = useCallback(
+    (page: number) => {
+      if (page >= 1 && page <= pdfState.totalPages) {
+        setPdfState((prev) => ({
+          ...prev,
+          currentPage: page,
+        }));
+        updateProgressOnRead(page, pdfState.totalPages);
+      }
+    },
+    [pdfState.totalPages, updateProgressOnRead],
   );
 
   const goToPrevPage = useCallback(() => {
-    goToPage(pdfState.currentPage - 1);
-  }, [pdfState.currentPage, goToPage]);
+    goToPageWithTracking(pdfState.currentPage - 1);
+  }, [pdfState.currentPage, goToPageWithTracking]);
 
   const goToNextPage = useCallback(() => {
-    goToPage(pdfState.currentPage + 1);
-  }, [pdfState.currentPage, goToPage]);
+    goToPageWithTracking(pdfState.currentPage + 1);
+  }, [pdfState.currentPage, goToPageWithTracking]);
 
   const zoomIn = useCallback(() => {
     setPdfState((prev) => ({
@@ -181,6 +195,7 @@ const BookReading: React.FC = () => {
         onZoomIn={zoomIn}
         onZoomOut={zoomOut}
         onScaleChange={handleScaleChange}
+        onPageChange={goToPage}
       />
     </div>
   );

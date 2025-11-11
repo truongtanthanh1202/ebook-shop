@@ -5,19 +5,26 @@ import { STORAGE_KEYS } from '../constants';
 interface UseReadingProgressReturn {
   progress: ReadingProgress | null;
   updateProgress: (page: number, totalPages: number) => void;
+  updateProgressOnRead: (page: number, totalPages: number) => void; // Only save when user starts reading
   loadProgress: (bookId: string) => ReadingProgress | null;
   saveProgress: (progress: ReadingProgress) => void;
+  hasStartedReading: boolean;
 }
 
 export const useReadingProgress = (bookId: string): UseReadingProgressReturn => {
   const [progress, setProgress] = useState<ReadingProgress | null>(null);
+  const [hasStartedReading, setHasStartedReading] = useState(false);
 
   const loadProgress = useCallback((id: string): ReadingProgress | null => {
     try {
       const stored = localStorage.getItem(STORAGE_KEYS.READING_PROGRESS);
       if (stored) {
         const allProgress = JSON.parse(stored);
-        return allProgress[id] || null;
+        const bookProgress = allProgress[id] || null;
+        if (bookProgress) {
+          setHasStartedReading(true);
+        }
+        return bookProgress;
       }
     } catch (error) {
       console.error('Failed to load reading progress:', error);
@@ -54,6 +61,26 @@ export const useReadingProgress = (bookId: string): UseReadingProgressReturn => 
       };
 
       setProgress(newProgress);
+      // Don't save here - only update state for display
+    },
+    [bookId],
+  );
+
+  // Update progress and save (only when user starts reading)
+  const updateProgressOnRead = useCallback(
+    (page: number, totalPages: number): void => {
+      const progressPercentage = Math.round((page / totalPages) * 100);
+
+      const newProgress: ReadingProgress = {
+        bookId,
+        currentPage: page,
+        totalPages,
+        progressPercentage,
+        lastReadDate: new Date().toISOString(),
+      };
+
+      setProgress(newProgress);
+      setHasStartedReading(true);
       saveProgress(newProgress);
     },
     [bookId, saveProgress],
@@ -69,7 +96,9 @@ export const useReadingProgress = (bookId: string): UseReadingProgressReturn => 
   return {
     progress,
     updateProgress,
+    updateProgressOnRead,
     loadProgress,
     saveProgress,
+    hasStartedReading,
   };
 };

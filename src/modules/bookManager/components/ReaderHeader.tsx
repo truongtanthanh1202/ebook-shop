@@ -17,19 +17,17 @@ const ReaderHeader: React.FC<ReaderHeaderProps> = ({ book, progress, onBack }) =
           {/* Back Button */}
           <button
             onClick={onBack}
-            className='flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200'
+            className='flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 cursor-pointer'
             title={TOOLTIPS.BACK_TO_LIBRARY}
           >
             <ArrowLeft className='h-5 w-5' />
             <span className='font-sans text-sm font-medium'>Back to Library</span>
           </button>
 
-          {/* Book Title - Centered */}
           <div className='flex-1 text-center px-4'>
             <h1 className='font-serif font-bold text-2xl text-gray-900 truncate'>{book.title}</h1>
           </div>
 
-          {/* Progress Display */}
           <div className='flex flex-col items-end space-y-2'>
             <div className='font-sans text-sm text-gray-600'>
               Page {progress.currentPage} / {progress.totalPages}
