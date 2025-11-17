@@ -162,7 +162,7 @@ export class HttpClient {
       return this.rejectErrorAndClearToken(error);
     }
 
-    // If refresh token is not valid and server response status == 401
+    // If refresh token is expired or not valid and server response status == 401
     if (url.includes('v1/auth/refresh-token')) {
       return this.rejectErrorAndClearToken(error);
     }
